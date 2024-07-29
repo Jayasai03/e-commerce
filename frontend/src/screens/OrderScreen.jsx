@@ -12,7 +12,6 @@ import React from 'react'
 
 const OrderScreen = () => {
    const { id: orderId } = useParams()
-
    const {data: order, refetch, isLoading, error } = useGetOrderDetailsQuery(orderId)
    const [payOrder, {isLoading: loadingPay}] = usePayOrderMutation()
    const [deliverOrder, {isLoading: loadingDeliver}] = useDeliverOrderMutation()
