@@ -1,13 +1,14 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import {Badge, Navbar, Nav, Container, NavDropdown} from 'react-bootstrap'
-import {FaShoppingCart, FaUser} from 'react-icons/fa'
+import {FaShoppingCart, FaUser, FaBars} from 'react-icons/fa'
 import {LinkContainer} from 'react-router-bootstrap'
 import {useSelector, useDispatch} from 'react-redux'
 import { useLogoutMutation } from '../slices/usersApiSlice'
 import {logout} from '../slices/authSlice'
 import SearchBox from './SearchBox'
 import logo from '../assets/logo.png'
+
 const Header = () => {
   const {cartItems} = useSelector(state => state.cart);  
   const {userInfo} = useSelector(state => state.auth);  
@@ -34,12 +35,14 @@ const Header = () => {
                 <Navbar.Brand >
                     <img src={logo} alt="Pandora's Box" width="30" height="30" className="d-inline-block align-top" />
                     Pandora's Box
-                    </Navbar.Brand>
+                </Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
+                        <div color='white'>lmao xd</div>
                         <SearchBox/>
+                        
                         <LinkContainer to='/cart'>
                         <Nav.Link >
                             <FaShoppingCart/> Cart
@@ -78,6 +81,18 @@ const Header = () => {
                                 </LinkContainer>
                             </NavDropdown>
                         )}
+                        <NavDropdown title={<FaBars />} id='adminmenu' >
+                                <LinkContainer to='/filter/Electrical'>
+                                <NavDropdown.Item>Electrical</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to='/filter/Mechanical'>
+                                <NavDropdown.Item>Mechanical</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to='/filter/Safety'>
+                                <NavDropdown.Item>Safety</NavDropdown.Item>
+                                </LinkContainer>
+                        </NavDropdown>
+                        
                     </Nav>    
                 </Navbar.Collapse>
             </Container>

@@ -10,10 +10,11 @@ import ProductCarousel from '../components/ProductCarousel'
 import Meta from '../components/Meta'
 
 const HomeScreen = () => {
-  const { pageNumber, keyword } = useParams();
-  const { data, isLoading, error } = useGetProductsQuery({keyword, pageNumber});
+  const { pageNumber, keyword, type } = useParams();
+  const { data, isLoading, error } = useGetProductsQuery({keyword, type, pageNumber});
   return (
     <>
+        <h1>Our Top Rated Products</h1>
         {!keyword ? <ProductCarousel/> : (<Link to='/' className='btn btn-light mb-4'>Go Back</Link>)}
         {isLoading ? (
           <Loader/>
@@ -28,7 +29,7 @@ const HomeScreen = () => {
                     </Col>
                 ))}
             </Row> 
-            <Paginate pages={data.pages} page={data.page} keyword = {keyword ? keyword: ''} />
+            <Paginate pages={data.pages} page={data.page} keyword = {keyword ? keyword: ''}  type = {type ? type: ''}/>
           </>)}
     </>
   )
